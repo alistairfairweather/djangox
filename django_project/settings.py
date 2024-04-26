@@ -16,7 +16,7 @@ SECRET_KEY = "django-insecure-0peo@#x9jur3!h$ryje!$879xww8y1y66jx!%*#ymhg&jkozs2
 DEBUG = True
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1","master.af-wango.c66.me"]
 
 
 # Application definition
@@ -79,24 +79,24 @@ TEMPLATES = [
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+#DATABASES = {
+#    "default": {
+#        "ENGINE": "django.db.backends.sqlite3",
+#        "NAME": BASE_DIR / "db.sqlite3",
+#    }
+#}
 
 # For Docker/PostgreSQL usage uncomment this and comment the DATABASES config above
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "postgres",
-#         "USER": "postgres",
-#         "PASSWORD": "postgres",
-#         "HOST": "db",  # set in docker-compose.yml
-#         "PORT": 5432,  # default postgres port
-#     }
-# }
+DATABASES = {
+     "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '{{POSTGRESQL_DEFAULT_DATABASE}}',
+        'USER': '{{POSTGRES_USER}}',
+        'PASSWORD': '{{POSTGRESQL_DEFAULT_PASSWORD}}',
+        'HOST': '{{POSTGRESQL_URL}}', 
+         "PORT": 5432,  # default postgres port
+     }
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
